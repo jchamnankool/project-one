@@ -1,0 +1,18 @@
+<h1>Log In</h1>
+<% if flash[:error].present? %>
+    <h2><%= flash[:error] %></h2>
+<% end %>
+
+<%= form_tag login_path do %>
+    <%= label_tag :email %>
+    <%= email_field_tag :email %>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+
+    <%= submit_tag "Log in" %>
+<% end %>
+
+<p>If you don't already have an account, sign up <%= link_to "here", new_user_path %>!</p>
+<!-- TODO forgot password -->
+<%# <p>Forgot your password?</p> %>

@@ -29,5 +29,11 @@ module ProjectOne
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # changes timezone in rails but NOT active record
+    config.time_zone = 'Sydney'
+    # changes timezone for active record as well
+    config.active_record.default_timezone = :local
+    # https://stackoverflow.com/questions/6118779/how-to-change-default-timezone-for-active-record-in-rails
   end
 end

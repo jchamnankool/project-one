@@ -4,12 +4,25 @@
     <title>ProjectOne</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/dark.min.css">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav>
+    <% if @current_user.present? %>
+      <a href="#">Feed</a>
+      | <%= link_to "New Entry", new_entry_path %>
+      | <%= link_to "Logout #{ @current_user.email }", login_path, :method => "delete" %>
+    <% else %>
+      <!-- will not show if logged in -->
+      <%= link_to "Home", root_path %>
+      | <%= link_to "Login", login_path %>
+      | <%= link_to "Register", new_user_path %>
+      <!-- end will not show if logged in -->
+    <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
