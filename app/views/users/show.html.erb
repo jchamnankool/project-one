@@ -4,7 +4,7 @@
         <div class="avatar"><%= @user.name[0] %></div>
         <h1><%= @user.name %></h1>
         <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
-        <p><strong><%= @user.followers.count %></strong> followers</p>
+        <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
         <p><strong><%= @user.following.count %></strong> following</p>
         <% if (not @current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
             <%= button_to "Follow #{@user.name}", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>

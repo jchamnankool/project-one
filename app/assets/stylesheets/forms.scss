@@ -66,11 +66,30 @@
             width: 200px;
             border-radius: 4px;
             border: none;
+            margin-bottom: 12px;
 
             &:hover {
                 background-color: #483078;
                 cursor: pointer;
             }
+        }
+    }
+
+    .btn {
+        background-color: #1B0F29;
+        color: #fff;
+        font-weight: bold;
+        font-size: 16px;
+        height: auto;
+        width: auto;
+        border-radius: 4px;
+        border: none;
+        padding: 12px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: #483078;
+            cursor: pointer;
         }
     }
 
