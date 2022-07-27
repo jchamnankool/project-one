@@ -3,13 +3,13 @@
     <h1>Edit tidbits</h1>
     <%= form_for @entry do |f| %>
         <%= f.label "Tidbit 1" %>
-        <%= f.text_field :tidbits, :required => true, :value => @tidbits[0], multiple: true %>
+        <%= f.text_area :tidbits, :required => true, :value => @tidbits[0], multiple: true %>
 
         <%= f.label "Tidbit 2" %>
-        <%= f.text_field :tidbits, :required => true, :value => @tidbits[1], multiple: true %>
+        <%= f.text_area :tidbits, :required => true, :value => @tidbits[1], multiple: true %>
 
         <%= f.label "Tidbit 3" %>
-        <%= f.text_field :tidbits, :required => true, :value => @tidbits[2], multiple: true %>
+        <%= f.text_area :tidbits, :required => true, :value => @tidbits[2], multiple: true %>
 
         <%= f.submit "Update", :class => "btn" %>
     <% end %>

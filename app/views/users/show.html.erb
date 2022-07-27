@@ -1,26 +1,35 @@
 <%= stylesheet_link_tag 'profile' %>
 <div class="wrapper">
     <div class="sidebar">
-        <div class="avatar"></div>
+        <div class="avatar"><%= @user.name[0] %></div>
         <h1><%= @user.name %></h1>
-        <span class="streak">Current streak: <%= @user.streak %> days</span>
+        <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
+        <p><strong><%= @user.followers.count %></strong> followers</p>
+        <p><strong><%= @user.following.count %></strong> following</p>
         <% if (not @current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "Follow", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
+            <%= button_to "Follow #{@user.name}", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
         <% elsif (@current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "Unfollow", { :controller => "users", :action => "unfollow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
+            <%= button_to "Unfollow #{@user.name}", { :controller => "users", :action => "unfollow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
         <% end %>
     </div>
     <div class="entries">
         <h2><%= @user.name %>'s tidbits</h2>
-        <% @entries.each do |entry| %>
-            <div class="entry">
-                <h2><%= link_to entry.created_at.strftime("%A, %B %d %Y"), entry_path(:id => entry.id) %></h2>
-                <ul>
-                    <% entry.tidbits.each do |tidbit| %>
-                        <li><%= tidbit  %></li>
-                    <% end %>
-                </ul>
-            </div>
+        <% if @user.entries.count > 0 %>
+            <% @entries.each do |entry| %>
+                <div class="entry">
+                    <h2><%= link_to "entry ##{ @user.entries.reverse.find_index(entry)+1 }", entry_path(:id => entry.id) %></h2>
+                    <h3><%= entry.created_at.strftime("%A, %B %d %Y") %></h3>
+                    <ul>
+                        <% entry.tidbits.each do |tidbit| %>
+                            <li><%= tidbit %></li>
+                        <% end %>
+                    </ul>
+
+                    <span class="hearts">❤️ 0 hearts</span>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="noTidbits"><%= @user.name %> has no tidbits yet. :(</p>
         <% end %>
     </div>
 </div>

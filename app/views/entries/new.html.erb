@@ -3,13 +3,13 @@
     <h1>Make a new entry</h1>
     <%= form_for @entry, html: { autocomplete: "off" } do |f| %>
         <%= f.label "Tidbit 1" %>
-        <%= f.text_field :tidbits, :required => true, multiple: true %>
+        <%= f.text_area :tidbits, :value => "", :required => true, multiple: true %>
 
         <%= f.label "Tidbit 2" %>
-        <%= f.text_field :tidbits, :required => true, multiple: true %>
+        <%= f.text_area :tidbits, :value => "", :required => true, multiple: true %>
 
         <%= f.label "Tidbit 3" %>
-        <%= f.text_field :tidbits, :required => true, multiple: true %>
+        <%= f.text_area :tidbits, :value => "", :required => true, multiple: true %>
 
         <%= f.submit "Submit", :class => "btn" %>
     <% end %>

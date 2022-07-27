@@ -36,12 +36,25 @@
         }
 
         input {
-            height: 24px;
+            height: 48px;
             width: 400px;
             font-size: 24px;
             padding: 12px;
             border-radius: 4px;
             border: none;
+        }
+
+        textarea {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            height: 80px;
+            width: 400px;
+            font-size: 24px;
+            padding: 12px;
+            border-radius: 4px;
+            border: none;
+            word-wrap: break-word;
+            word-break: break-all;
+            resize: none;
         }
 
         .btn {

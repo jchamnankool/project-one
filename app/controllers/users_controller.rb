@@ -40,7 +40,7 @@ class UsersController < ApplicationController
     def unfollow
       @current_user.following.delete params[:id]
       unfollowed_user = User.find_by_id params[:id]
-      unfollowed_user.followers.delete @current_user.id
+      unfollowed_user.followers.delete @current_user.id.to_s
       unfollowed_user.save
       @current_user.save
       redirect_to user_path(:id => params[:id])

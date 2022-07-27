@@ -15,8 +15,6 @@
         <%= link_to "tidbits", root_path %>
       </div>
       <div class="navItems">
-        <%# <%= link_to "About", root_path %>
-        <%# <%= link_to "Contact", root_path %>
         <% if @current_user.present? %>
           <%= link_to "Dashboard", dashboard_path %>
           <%= link_to "New Entry", new_entry_path %>
