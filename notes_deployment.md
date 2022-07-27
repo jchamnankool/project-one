@@ -46,7 +46,7 @@ If you have any migrations or unseeded data, migrate and seed first by running:
 ```
 To then push code, run:
 ```shell
-~/project-name$ git push heroku master
+~/project-name$ git push heroku main
 ```
 You can now refresh your app and see your changes.
 
