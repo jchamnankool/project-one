@@ -12,8 +12,25 @@ class EntriesController < ApplicationController
     end
     
     def show
-      entry = Entry.where(user_id: @current_user.id).last
-      @tidbits = entry.tidbits
+      @entry = Entry.find params[:id]
+      @tidbits = @entry.tidbits
+    end
+
+    def edit
+      @entry = Entry.find params[:id]
+      @tidbits = @entry.tidbits
+    end
+
+    def update
+      entry = Entry.find params[:id]
+      entry.update entry_params
+      redirect_to entry
+    end
+
+    def destroy
+      entry = Entry.find params[:id]
+      entry.destroy
+      redirect_to user_path(:id => @current_user.id)
     end
 
     private

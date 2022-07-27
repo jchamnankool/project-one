@@ -10,21 +10,45 @@ class UsersController < ApplicationController
     end
   
     def create
+      user_params[:name].capitalize!
       # create user in memory first
       @user = User.new user_params
       # if successful redirect to right page
       if @user.save
         session[:user_id] = @user.id
-        redirect_to root_path
+        redirect_to dashboard_path
       else
         # render same page again
         render :new
       end
     end
+
+    def show # "profile"
+      @user = User.find_by_id params[:id]
+      @entries = @user.entries
+    end
+
+    def follow
+      @current_user.following << params[:id]
+      followed_user = User.find_by_id params[:id]
+      followed_user.followers << @current_user.id
+      followed_user.save
+      @current_user.save
+      redirect_to user_path(:id => params[:id])
+    end
+
+    def unfollow
+      @current_user.following.delete params[:id]
+      unfollowed_user = User.find_by_id params[:id]
+      unfollowed_user.followers.delete @current_user.id
+      unfollowed_user.save
+      @current_user.save
+      redirect_to user_path(:id => params[:id])
+    end
   
     private
     def user_params
-      params.require(:user).permit(:email, :dob, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
   end
   

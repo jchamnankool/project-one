@@ -1,0 +1,36 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+
+    .test {
+        background-color: #1B0F28;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+        h1 {
+            font-size: 124px;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            text-transform: lowercase;
+        }
+    }
+    
+    .test2 {
+        background-color: #280E43;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 25vh;
+        width: 100vw;
+    }
+}

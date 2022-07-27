@@ -1,8 +1,27 @@
-<h1>Entry</h1>
-<ul>
-    <% @tidbits.each_with_index do |tidbit| %>
-        <li><%= tidbit %></li>
-    <% end %>
-</ul>
+<%= stylesheet_link_tag 'entries' %>
+<div class="wrapper">
+    <h1>tidbits</h1>
+    <h2><%= @entry.created_at.strftime("%A, %B %d %Y") %></h2>
 
-<!-- TODO edit tidbit, delete tidbit -->
+    <div class="entry">
+        <% @tidbits.each_with_index do |tidbit, index| %>
+            <div class="tidbits">
+                <div class="bitNum">
+                    <%= index+1 %>
+                </div>
+                <div class="bit">
+                    <%= tidbit %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+
+    <%= link_to "Back to #{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
+    
+    <% if @current_user.id == @entry.user_id %>
+        <div class="controls">
+            <%= link_to "Edit tidbits", edit_entry_path %>
+            <%= link_to "Delete tidbits", @entry, :method => "delete", :data => { :confirm => "Are you sure you want to delete this entry?" } %>
+        </div>
+    <% end %>
+</div>

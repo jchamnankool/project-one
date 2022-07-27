@@ -1,13 +1,16 @@
-<h1>Make a new entry</h1>
-<%= form_for @entry do |f| %>
-    <%= f.label "Tidbit 1" %>
-    <%= f.text_field :tidbits, :required => true, multiple: true %>
+<%= stylesheet_link_tag 'forms' %>
+<div class="wrapper">
+    <h1>Make a new entry</h1>
+    <%= form_for @entry, html: { autocomplete: "off" } do |f| %>
+        <%= f.label "Tidbit 1" %>
+        <%= f.text_field :tidbits, :required => true, multiple: true %>
 
-    <%= f.label "Tidbit 2" %>
-    <%= f.text_field :tidbits, :required => true, multiple: true %>
+        <%= f.label "Tidbit 2" %>
+        <%= f.text_field :tidbits, :required => true, multiple: true %>
 
-    <%= f.label "Tidbit 3" %>
-    <%= f.text_field :tidbits, :required => true, multiple: true %>
+        <%= f.label "Tidbit 3" %>
+        <%= f.text_field :tidbits, :required => true, multiple: true %>
 
-    <%= f.submit %>
-<% end %>
+        <%= f.submit "Submit", :class => "btn" %>
+    <% end %>
+</div>
