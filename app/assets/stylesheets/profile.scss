@@ -88,6 +88,10 @@
                 &:hover {
                     color: #483078;
                 }
+
+                &.hearts {
+                    font-size: 12px;
+                }
             }
 
             ul {
@@ -96,10 +100,6 @@
 
             li {
                 padding-bottom: 12px;
-            }
-
-            .hearts {
-                font-size: 12px;
             }
         }
     }

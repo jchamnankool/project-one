@@ -19,9 +19,7 @@
           <%= link_to "Dashboard", dashboard_path %>
           <%= link_to "New Entry", new_entry_path %>
           <%= link_to "Profile", user_path(:id => @current_user.id) %>
-          <% if @current_user.admin? %>
-          <%= link_to "All Users", users_path %>
-          <% end %>
+          <%= link_to "All Users", users_path if @current_user.admin? %>
           <%= link_to "Logout #{ @current_user.name }", login_path, :method => "delete" %>
           <%= link_to "Settings", root_path %>
         <% else %>
