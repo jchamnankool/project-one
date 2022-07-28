@@ -27,6 +27,11 @@
 
     h1 {
         margin-bottom: 0;
+
+        &.session_header {
+            margin-bottom: 24px;
+            text-transform: lowercase;
+        }
     }
 
     p {

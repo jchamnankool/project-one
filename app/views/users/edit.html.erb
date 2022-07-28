@@ -24,10 +24,10 @@
         
         <%= form_for @user, :html => {:multipart => true} do |f| %>
             <%= f.label "First name:" %>
-            <%= f.text_field :name, value: @user.name %>
+            <%= f.text_field :name, value: @user.name, required: true %>
 
             <%= f.label :email %>
-            <%= f.email_field :email, value: @user.email %>
+            <%= f.email_field :email, value: @user.email, required: true %>
 
             <%= f.label "New password:" %>
             <%= f.password_field :password, placeholder: "New password" %>
