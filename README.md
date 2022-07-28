@@ -1,5 +1,5 @@
 # tidbits
-Try **tidbits** [here](https://tidbitstime.herokuapp.com)!
+Try **tidbits** [here](https://tidbitstime.herokuapp.com)! 💗
 
 This web app is very positive and very purple. It takes a habit of mine I hold very dear and manifests it into a functioning application for all to use.
 
