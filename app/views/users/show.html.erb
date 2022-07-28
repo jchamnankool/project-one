@@ -15,10 +15,10 @@
     <div class="entries">
         <h2><%= @user.name %>'s tidbits</h2>
         <% if @user.entries.count > 0 %>
-            <% @entries.each do |entry| %>
+            <% @entries.reverse.each do |entry| %>
                 <div class="entry">
-                    <h2><%= link_to "entry ##{ @user.entries.reverse.find_index(entry)+1 }", entry_path(:id => entry.id) %></h2>
-                    <h3><%= entry.created_at.strftime("%A, %B %d %Y") %></h3>
+                    <h2><%= link_to "entry ##{ @user.entries.find_index(entry)+1 }", entry_path(:id => entry.id) %></h2>
+                    <h3><%= entry.created_at.strftime("%A, %B %d %Y at %H:%M") %></h3>
                     <ul>
                         <% entry.tidbits.each do |tidbit| %>
                             <li><%= tidbit %></li>

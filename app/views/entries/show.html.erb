@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'entries' %>
 <div class="wrapper">
-    <h1>entry #<%= User.find_by_id(@entry.user_id).entries.reverse.find_index(@entry)+1 %></h1>
-    <h2><%= @entry.created_at.strftime("%A, %B %d %Y") %></h2>
+    <h1>entry #<%= User.find_by_id(@entry.user_id).entries.find_index(@entry)+1 %></h1>
+    <h2><%= @entry.created_at.strftime("%A, %B %d %Y at %H:%M") %></h2>
 
     <div class="entry">
         <% @tidbits.each_with_index do |tidbit, index| %>

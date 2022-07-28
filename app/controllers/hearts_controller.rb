@@ -10,15 +10,18 @@ class HeartsController < ApplicationController
       current_user_heart = liked_entry.hearts.find{ |h| h.user_id == @current_user.id }
 
       if current_user_heart # if current user has already liked the entry
-        liked_entry.hearts.delete(current_user_heart)
+        Entry.find_by_id(heart_params[:entry_id]).hearts.delete(current_user_heart)
+        User.find_by_id(heart_params[:user_id]).hearts.delete(current_user_heart)
         heart = Heart.find current_user_heart.id
         heart.destroy
       else
         heart = Heart.new heart_params
-        liked_entry.hearts << heart
+        Entry.find_by_id(heart_params[:entry_id]).hearts << heart
+        User.find_by_id(liked_entry[:user_id]).entries.find_by_id(heart_params[:entry_id]).hearts << heart
       end
 
-      liked_entry.save
+      Entry.find_by_id(heart_params[:entry_id]).save
+      User.find_by_id(heart_params[:user_id]).save
       redirect_back(fallback_location: root_path)
     end
 

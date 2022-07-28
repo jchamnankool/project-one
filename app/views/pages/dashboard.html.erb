@@ -2,12 +2,43 @@
 <div class="wrapper">
     <div class="sidebar">
         <h1>stats</h1>
-        <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
-        <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
-        <p><strong><%= @user.following.count %></strong> following</p>
-        <p><strong><%= @user.following.count %></strong> following</p>
+        <p><strong><%= @tidbitsCount %></strong> tidbits</p>
+        <p><strong><%= @followerCount %></strong> <%= "follower".pluralize(@followerCount) %></p>
+        <p><strong><%= @followingCount %></strong> following</p>
+        <p><strong><%= @heartsCount %></strong> hearts</p>
+        <%= link_to "Make New Entry", new_entry_path, :class => "btn" %>
     </div>
+
     <div class="feed">
-        <h2><%= @user.name %>'s feed</h2>
+        <h2>feed</h2>
+        <% if @followingCount > 0 %>
+            <% @feed.each do |entry| %>
+                <div class="entry">
+                    <h2><%= link_to "entry", entry_path(:id => entry.id) %> by <%= link_to User.find_by_id(entry[:user_id]).name, user_path(id: entry[:user_id]) %></h2>
+                    <h3><%= entry.created_at.strftime("%A, %B %d %Y at %H:%M") %></h3>
+                    <ul>
+                        <% entry.tidbits.each do |tidbit| %>
+                            <li><%= tidbit %></li>
+                        <% end %>
+                    </ul>
+
+                    <% if entry.hearts.count == 0 %>
+                        <% heartsText = "0 hearts" %>
+                    <% elsif entry.hearts.count == 1 %>
+                        <% heartsText = "#{entry.hearts.first.user_name} loves this" %>
+                    <% elsif entry.hearts.count == 2 %>
+                        <% heartsText = "#{entry.hearts.first.user_name} and #{entry.hearts[1].user_name} love this" %>
+                    <% elsif entry.hearts.count == 3 %>
+                        <% heartsText = "#{entry.hearts.first.user_name}, #{entry.hearts[1].user_name} and 1 other love this" %>
+                    <% else %>
+                        <% heartsText = "#{entry.hearts.first.user_name}, #{entry.hearts[1].user_name} and #{entry.hearts.count-2} others love this" %>
+                    <% end %>
+
+                    <%= link_to "❤️ #{heartsText}", hearts_path(heart: {user_name: @current_user.name, user_id: @current_user.id, entry_id: entry.id}), :method => :post, :class => "hearts" %>
+                </div>
+            <% end %>
+        <% else %>
+            <p class="noTidbits">You haven't followed anyone yet. :(</p>
+        <% end %>
     </div>
 </div>
