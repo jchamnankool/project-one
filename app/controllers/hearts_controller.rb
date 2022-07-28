@@ -19,7 +19,7 @@ class HeartsController < ApplicationController
       end
 
       liked_entry.save
-      redirect_to user_path(:id => liked_entry[:user_id])
+      redirect_back(fallback_location: root_path)
     end
 
     def destroy

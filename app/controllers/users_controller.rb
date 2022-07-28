@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       followed_user.followers << @current_user.id
       followed_user.save
       @current_user.save
-      redirect_to user_path(:id => params[:id])
+      redirect_back(fallback_location: root_path)
     end
 
     def unfollow
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       unfollowed_user.followers.delete @current_user.id.to_s
       unfollowed_user.save
       @current_user.save
-      redirect_to user_path(:id => params[:id])
+      redirect_back(fallback_location: root_path)
     end
   
     private

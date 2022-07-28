@@ -16,6 +16,22 @@
         <% end %>
     </div>
 
+    <div class="engagement">
+        <% if @entry.hearts.count == 0 %>
+            <% heartsText = "0 hearts" %>
+        <% elsif @entry.hearts.count == 1 %>
+            <% heartsText = "#{@entry.hearts.first.user_name} loves this" %>
+        <% elsif @entry.hearts.count == 2 %>
+            <% heartsText = "#{@entry.hearts.first.user_name} and #{@entry.hearts[1].user_name} love this" %>
+        <% elsif @entry.hearts.count == 3 %>
+            <% heartsText = "#{@entry.hearts.first.user_name}, #{@entry.hearts[1].user_name} and 1 other love this" %>
+        <% else %>
+            <% heartsText = "#{@entry.hearts.first.user_name}, #{@entry.hearts[1].user_name} and #{@entry.hearts.count-2} others love this" %>
+        <% end %>
+
+        <%= link_to "❤️ #{heartsText}", hearts_path(heart: {user_name: @current_user.name, user_id: @current_user.id, entry_id: @entry.id}), :method => :post, :class => "hearts" %>
+    </div>
+
     <%= link_to "Back to #{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
     
     <% if @current_user.id == @entry.user_id %>

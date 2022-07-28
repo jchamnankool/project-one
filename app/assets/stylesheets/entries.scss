@@ -38,6 +38,10 @@
         padding: 8px 0 8px 24px;
     }
 
+    .engagement {
+        margin: 12px 0 24px 0;
+    }
+
     .btn {
         background-color: #1B0F29;
         color: #fff;
@@ -52,24 +56,30 @@
 
         &:hover {
             background-color: #483078;
+            color: #fff;
+            border: none;
             cursor: pointer;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: #906090;
+        transition: border-bottom 150ms ease-in-out;
+        border-bottom: 1px solid #fff0;
+        margin: 0 12px;
+
+        &:hover { // hehehehehehe
+            border-bottom: 1px solid #483078;
+            color: #483078;
+        }
+
+        &.hearts {
+            border: none;
         }
     }
 
     .controls {
         margin-top: 24px;
-
-        a {
-            text-decoration: none;
-            color: #906090;
-            transition: border-bottom 150ms ease-in-out;
-            border-bottom: 1px solid #fff0;
-            margin: 0 12px;
-    
-            &:hover { // hehehehehehe
-                border-bottom: 1px solid #483078;
-                color: #483078;
-            }
-        }
     }
 }

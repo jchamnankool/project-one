@@ -1,6 +1,13 @@
 <%= stylesheet_link_tag 'dashboard' %>
 <div class="wrapper">
-    <h1>Dashboard</h1>
-    <h2>Hello <%= @user.name %>!</h2>
-    <p>This space is currently under construction. :)</p>
+    <div class="sidebar">
+        <h1>stats</h1>
+        <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
+        <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
+        <p><strong><%= @user.following.count %></strong> following</p>
+        <p><strong><%= @user.following.count %></strong> following</p>
+    </div>
+    <div class="feed">
+        <h2><%= @user.name %>'s feed</h2>
+    </div>
 </div>
