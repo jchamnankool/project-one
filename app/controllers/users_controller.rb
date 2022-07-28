@@ -59,21 +59,15 @@ class UsersController < ApplicationController
     end
 
     def follow
-      @current_user.following << params[:id]
-      followed_user = User.find_by_id params[:id]
-      followed_user.followers << @current_user.id
-      followed_user.save
-      @current_user.save
-      redirect_back(fallback_location: root_path)
+      @user = User.find(params[:id])
+      @current_user.followees << @user
+      redirect_back(fallback_location: user_path(@user))
     end
-
+    
     def unfollow
-      @current_user.following.delete params[:id]
-      unfollowed_user = User.find_by_id params[:id]
-      unfollowed_user.followers.delete @current_user.id.to_s
-      unfollowed_user.save
-      @current_user.save
-      redirect_back(fallback_location: root_path)
+      @user = User.find(params[:id])
+      @current_user.followed_users.find_by(followee_id: @user.id).destroy
+      redirect_back(fallback_location: user_path(@user))
     end
   
     private

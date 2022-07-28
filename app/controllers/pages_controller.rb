@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       @user = User.find_by_id(session[:user_id])
       @tidbits_count = @user.entries.count * 3
       @follower_count = @user.followers.count
-      @following = @user.following
+      @following = @user.followees
       @following_count = @following.count
       @hearts_count = 0;
       @user.entries.each {|e| @hearts_count += e.hearts.count}
@@ -24,6 +24,9 @@ class PagesController < ApplicationController
 
       users = User.all
       @random_user_id = users[rand(0...User.count)].id
+      while @random_user_id == @current_user.id do
+        @random_user_id = users[rand(0...User.count)].id
+      end
     end
 end
   

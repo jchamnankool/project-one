@@ -18,7 +18,7 @@
 
     <div class="feed">
         <h2>feed</h2>
-        <% if @following_count > 0 %>
+        <% if @feed.count > 0 %>
             <% @feed.each do |entry| %>
                 <div class="entry">
                     <h2><%= link_to "entry", entry_path(:id => entry.id) %> by <%= link_to User.find_by_id(entry[:user_id]).name, user_path(id: entry[:user_id]) %></h2>
@@ -45,8 +45,13 @@
                 </div>
             <% end %>
         <% else %>
-            <p class="noTidbits">You haven't followed anyone yet. :(</p>
-            <%= link_to "get me a random profile!", user_path(id: @random_user_id), :class => "btn" %>
+            <% if @following_count == 0 %>
+                <p class="noTidbits">You haven't followed anyone yet. :(</p>
+            <% else %>
+                <p class="noTidbits">No one you've followed has posted anything yet. :(</p>
+            <% end %>
+            <%= link_to "ok then, get me a random profile!", user_path(id: @random_user_id), :class => "btn" %>
         <% end %>
+        
     </div>
 </div>

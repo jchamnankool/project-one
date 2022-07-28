@@ -11,11 +11,13 @@
         <h1><%= @user.name %></h1>
         <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
         <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
-        <p><strong><%= @user.following.count %></strong> following</p>
-        <% if (not @current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "follow #{@user.name}", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
-        <% elsif (@current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "unfollow #{@user.name}", { :controller => "users", :action => "unfollow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
+        <p><strong><%= @user.followees.count %></strong> following</p>
+        <% if (params[:id].to_i != @current_user.id) %>
+            <% if @current_user.followees.include?(User.find_by_id(params[:id])) %>
+                <%= button_to "unfollow #{@user.name}", unfollow_user_path, class: "followBtn", :method => :post %>
+            <% else %>
+                <%= button_to "follow #{@user.name}", follow_user_path, class: "followBtn", :method => :post %>
+            <% end %>
         <% end %>
     </div>
     <div class="entries">

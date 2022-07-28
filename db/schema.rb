@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_28_024718) do
+ActiveRecord::Schema.define(version: 2022_07_28_111654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 2022_07_28_024718) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "hearts", default: [], array: true
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "hearts", force: :cascade do |t|
@@ -38,8 +45,6 @@ ActiveRecord::Schema.define(version: 2022_07_28_024718) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false
     t.string "name"
-    t.text "following", default: [], array: true
-    t.text "followers", default: [], array: true
     t.string "avatar"
   end
 

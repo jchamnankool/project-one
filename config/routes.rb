@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :follows
   root :to => "pages#home"
   get "/dashboard" => "pages#dashboard"
   resources :users
-  patch "users/follow" => "users#follow"
-  patch "users/unfollow" => "users#unfollow"
+  post "/users/:id/follow", to: "users#follow", as: "follow_user"
+  post "/users/:id/unfollow", to: "users#unfollow", as: "unfollow_user"
+  # put "/users/follow" => "users#follow"
+  # put "/users/unfollow" => "users#unfollow"
   resources :entries
   resources :hearts, :only => [:create, :destroy]
   # logging in
