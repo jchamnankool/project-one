@@ -8,7 +8,7 @@
                 <%= @user.name[0] %>
             <% end %>
         </div>
-        <h1>stats</h1>
+        <h1><%= @user.name %>'s stats</h1>
         <p><strong><%= @tidbits_count %></strong> tidbits</p>
         <p><strong><%= @follower_count %></strong> <%= "follower".pluralize(@follower_count) %></p>
         <p><strong><%= @following_count %></strong> following</p>

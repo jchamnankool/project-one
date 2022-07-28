@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'forms' %>
 <div class="wrapper">
-    <h1>Make a new entry</h1>
+    <h1>make a new entry</h1>
+    <p>All you need are three bits of positivity! Anything you're grateful for or even small things that put a smile on your face will do.</p>
     <%= form_for @entry, html: { autocomplete: "off" } do |f| %>
         <%= f.label "Tidbit 1" %>
         <%= f.text_area :tidbits, :value => "", :required => true, multiple: true %>

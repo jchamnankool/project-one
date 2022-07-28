@@ -25,6 +25,15 @@
         }
     }
 
+    h1 {
+        margin-bottom: 0;
+    }
+
+    p {
+        text-align: center;
+        width: 20vw;
+    }
+
     form {
         display: flex;
         flex-direction: column;
