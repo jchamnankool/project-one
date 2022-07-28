@@ -32,12 +32,12 @@
         <%= link_to "❤️ #{heartsText}", hearts_path(heart: {user_name: @current_user.name, user_id: @current_user.id, entry_id: @entry.id}), :method => :post, :class => "hearts" %>
     </div>
 
-    <%= link_to "Back to #{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
+    <%= link_to "back to #{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
     
     <% if @current_user.id == @entry.user_id %>
         <div class="controls">
-            <%= link_to "Edit tidbits", edit_entry_path %>
-            <%= link_to "Delete tidbits", @entry, :method => "delete", :data => { :confirm => "Are you sure you want to delete these tidbits?" } %>
+            <%= link_to "edit tidbits", edit_entry_path %>
+            <%= link_to "delete tidbits", @entry, :method => "delete", :data => { :confirm => "Are you sure you want to delete these tidbits?" } %>
         </div>
     <% end %>
 </div>

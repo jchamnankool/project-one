@@ -13,9 +13,9 @@
         <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
         <p><strong><%= @user.following.count %></strong> following</p>
         <% if (not @current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "Follow #{@user.name}", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
+            <%= button_to "follow #{@user.name}", { :controller => "users", :action => "follow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
         <% elsif (@current_user.following.include? params[:id]) && (params[:id].to_i != @current_user.id) %>
-            <%= button_to "Unfollow #{@user.name}", { :controller => "users", :action => "unfollow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
+            <%= button_to "unfollow #{@user.name}", { :controller => "users", :action => "unfollow", :id => params[:id].to_i}, class: "followBtn", :method => :patch %>
         <% end %>
     </div>
     <div class="entries">

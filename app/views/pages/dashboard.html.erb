@@ -9,16 +9,16 @@
             <% end %>
         </div>
         <h1>stats</h1>
-        <p><strong><%= @tidbitsCount %></strong> tidbits</p>
-        <p><strong><%= @followerCount %></strong> <%= "follower".pluralize(@followerCount) %></p>
-        <p><strong><%= @followingCount %></strong> following</p>
-        <p><strong><%= @heartsCount %></strong> <%= "heart".pluralize(@heartsCount) %></p>
-        <%= link_to "Make New Entry", new_entry_path, :class => "btn" %>
+        <p><strong><%= @tidbits_count %></strong> tidbits</p>
+        <p><strong><%= @follower_count %></strong> <%= "follower".pluralize(@follower_count) %></p>
+        <p><strong><%= @following_count %></strong> following</p>
+        <p><strong><%= @hearts_count %></strong> <%= "heart".pluralize(@hearts_count) %></p>
+        <%= link_to "make new entry", new_entry_path, :class => "btn" %>
     </div>
 
     <div class="feed">
         <h2>feed</h2>
-        <% if @followingCount > 0 %>
+        <% if @following_count > 0 %>
             <% @feed.each do |entry| %>
                 <div class="entry">
                     <h2><%= link_to "entry", entry_path(:id => entry.id) %> by <%= link_to User.find_by_id(entry[:user_id]).name, user_path(id: entry[:user_id]) %></h2>
@@ -46,6 +46,7 @@
             <% end %>
         <% else %>
             <p class="noTidbits">You haven't followed anyone yet. :(</p>
+            <%= link_to "get me a random profile!", user_path(id: @random_user_id), :class => "btn" %>
         <% end %>
     </div>
 </div>

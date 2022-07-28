@@ -11,8 +11,8 @@
         <%= f.label "Tidbit 3" %>
         <%= f.text_area :tidbits, :required => true, :value => @tidbits[2], multiple: true %>
 
-        <%= f.submit "Update", :class => "btn" %>
+        <%= f.submit "update", :class => "btn" %>
     <% end %>
 
-    <%= link_to "Back to entry", entry_path, :class => "btn" %>
+    <%= link_to "back to entry", entry_path, :class => "btn" %>
 </div>

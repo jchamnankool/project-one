@@ -7,12 +7,12 @@ class PagesController < ApplicationController
 
     def dashboard
       @user = User.find_by_id(session[:user_id])
-      @tidbitsCount = @user.entries.count * 3
-      @followerCount = @user.followers.count
+      @tidbits_count = @user.entries.count * 3
+      @follower_count = @user.followers.count
       @following = @user.following
-      @followingCount = @following.count
-      @heartsCount = 0;
-      @user.entries.each {|e| @heartsCount += e.hearts.count}
+      @following_count = @following.count
+      @hearts_count = 0;
+      @user.entries.each {|e| @hearts_count += e.hearts.count}
 
       @feed = []
       @following.each do |follow_id|
@@ -21,6 +21,9 @@ class PagesController < ApplicationController
         end
       end
       @feed = @feed.sort_by { |e| e["created_at"] }.reverse
+
+      users = User.all
+      @random_user_id = users[rand(0...User.count)].id
     end
 end
   
