@@ -1,5 +1,8 @@
 <%= stylesheet_link_tag 'profile' %>
 <div class="wrapper">
+<% if @user.avatar != nil %>
+        <%= cl_image_tag(@user.avatar) %>
+    <% end %>
     <div class="sidebar">
         <div class="avatar"><%= @user.name[0] %></div>
         <h1><%= @user.name %></h1>

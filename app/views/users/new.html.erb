@@ -24,6 +24,9 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, placeholder: "Confirm password" %>
 
+        <%= f.label "Avatar: " %>
+        <%= f.file_field :avatar %>
+
         <%= f.submit "Sign up", :class => "btn" %>
     <% end %>
 

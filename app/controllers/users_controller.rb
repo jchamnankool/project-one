@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :check_for_login
+    before_action :check_for_login, :except => [:new, :create]
     before_action :check_for_admin, :only => [:index]
   
     def index
@@ -12,9 +12,13 @@ class UsersController < ApplicationController
   
     def create
       user_params[:name].capitalize!
-      # create user in memory first
       @user = User.new user_params
-      # if successful redirect to right page
+
+      if params[:file].present?
+        req = Cloudinary::Uploader.upload(params[:file])
+        @user.avatar = req["public_id"]
+      end
+
       if @user.save
         session[:user_id] = @user.id
         redirect_to dashboard_path
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
   
     private
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar)
     end
   end
   
