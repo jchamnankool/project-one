@@ -1,0 +1,37 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+
+    h1 {
+        margin-bottom: 4px;
+    }
+
+    table, th, td {
+        text-align: center;
+        border-collapse: collapse;
+        border: 1px solid #483078;
+        padding: 12px;
+    }
+
+    th {
+        font-size: 24px;
+    }
+
+    a {
+        text-decoration: none;
+        transition: border-bottom 150ms ease-in-out;
+        border-bottom: 1px solid #280E43;
+
+        &:hover {
+            color: #1B0F28;
+            border-bottom: 1px solid #1B0F28;
+        }
+    }
+
+    tr:not(:first-child):hover {
+        background-color: #483078;
+    }
+}

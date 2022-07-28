@@ -1,1 +1,31 @@
-<!-- will list all users, an admin panel -->
+<%= stylesheet_link_tag 'admin' %>
+<div class="wrapper">
+    <h1>⚠️ adminstration panel ⚠️</h1>
+    <p><strong><%= User.count %></strong> total users</p>
+    <table>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Total Tidbits</th>
+        <th>Latest Tidbit</th>
+        <th>Followers</th>
+        <th>Following</th>
+        <% User.all.each do |user| %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.email %></td>
+                <td><%= link_to "#{user.name}", user_path(:id => user.id) %></td>
+                <td><%= user.entries.count*3 %></td>
+                <td>
+                    <% if user.entries.count > 0 %>
+                        <%= user.entries.last.created_at.strftime("%d/%m/%Y, %H:%M:%S") %>
+                    <% else %>
+                        -
+                    <% end %>
+                </td>
+                <td><%= user.followers.count %></td>
+                <td><%= user.following.count %></td>
+            </tr>
+        <% end %>
+    </table>
+</div>

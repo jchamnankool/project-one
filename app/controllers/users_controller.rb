@@ -32,6 +32,27 @@ class UsersController < ApplicationController
       end
     end
 
+    def edit
+      @user = User.find_by_id params[:id]
+    end
+
+    def update
+      user_params[:name].capitalize!
+      user = User.find_by_id params[:id]
+
+      if params[:file].present?
+        req = Cloudinary::Uploader.upload(params[:file])
+        user.avatar = req["public_id"]
+      end
+
+      if user.save
+        user.update user_params
+        redirect_to dashboard_path
+      else
+        render :edit
+      end
+    end
+
     def show # "profile"
       @user = User.find_by_id params[:id]
       @entries = @user.entries

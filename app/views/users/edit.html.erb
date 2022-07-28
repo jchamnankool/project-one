@@ -1,0 +1,45 @@
+<%= stylesheet_link_tag 'settings' %>
+<div class="wrapper">
+    <div class="sidebar">
+        <div class="avatar">
+            <% if @user.avatar? %>
+                <%= cl_image_tag(@user.avatar) %>
+            <% else %>
+                <%= @user.name[0] %>
+            <% end %>
+        </div>
+        <h1><%= @user.name %></h1>
+    </div>
+
+    <div class="settings">
+        <h2>Settings</h2>
+        <% if @user.errors.any? %>
+            <div class="error">
+                <h2>Update failed.</h2>
+                <% @user.errors.full_messages.each do |msg| %>
+                    <p>⚠️ <%= msg %></p>
+                <% end %>
+            </div>
+        <% end %>
+        
+        <%= form_for @user, :html => {:multipart => true} do |f| %>
+            <%= f.label "First name:" %>
+            <%= f.text_field :name, value: @user.name %>
+
+            <%= f.label :email %>
+            <%= f.email_field :email, value: @user.email %>
+
+            <%= f.label "New password:" %>
+            <%= f.password_field :password, placeholder: "New password" %>
+
+            <%= f.label "Avatar:" %>
+            <%= f.cl_image_upload :avatar %>
+
+            <% if @user.avatar? %>
+                <%= link_to "Remove avatar", edit_user_path %>
+            <% end %>
+
+            <%= f.submit "Save changes", :class => "btn" %>
+        <% end %>
+    </div>
+</div>

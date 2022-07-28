@@ -2,6 +2,7 @@ class PagesController < ApplicationController
     before_action :check_for_login, only: :dashboard
 
     def home
+      redirect_to dashboard_path if @current_user.present?
     end
 
     def dashboard
