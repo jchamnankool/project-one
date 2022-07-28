@@ -13,6 +13,25 @@
         width: 10vw;
         padding: 72px 24px 0 24px;
 
+        .avatar {
+            background-color: #DFCDC9;
+            color: #483078;
+            font-size: 72px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+
+            img {
+                width: auto;
+                height: 100%;
+            }
+        }
+
         h1 {
             font-size: 32px;
             margin: 12px 0;

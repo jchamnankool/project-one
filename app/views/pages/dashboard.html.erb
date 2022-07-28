@@ -1,11 +1,18 @@
 <%= stylesheet_link_tag 'dashboard' %>
 <div class="wrapper">
     <div class="sidebar">
+        <div class="avatar">
+            <% if @user.avatar != nil %>
+                <%= cl_image_tag(@user.avatar) %>
+            <% else %>
+                <%= @user.name[0] %>
+            <% end %>
+        </div>
         <h1>stats</h1>
         <p><strong><%= @tidbitsCount %></strong> tidbits</p>
         <p><strong><%= @followerCount %></strong> <%= "follower".pluralize(@followerCount) %></p>
         <p><strong><%= @followingCount %></strong> following</p>
-        <p><strong><%= @heartsCount %></strong> hearts</p>
+        <p><strong><%= @heartsCount %></strong> <%= "heart".pluralize(@heartsCount) %></p>
         <%= link_to "Make New Entry", new_entry_path, :class => "btn" %>
     </div>
 

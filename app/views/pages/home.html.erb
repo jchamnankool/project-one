@@ -1,10 +1,15 @@
 <%= stylesheet_link_tag 'home' %>
 <div class="wrapper">
-    <div class="test">
+    <div class="hero">
         <h1>tidbits</h1>
         <span class="tagline">A few bits of happiness</span>
+        <% if @current_user.present? %>
+            <%= link_to "add an entry now", new_entry_path, :class => "cta" %>
+        <% else %>
+            <%= link_to "register now", new_user_path, :class => "cta" %>
+        <% end %>
     </div>
-    <div class="test2">
+    <div class="blurb">
         sdfsdfsdfsd
     </div>
 </div>
