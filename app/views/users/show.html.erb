@@ -1,10 +1,13 @@
 <%= stylesheet_link_tag 'profile' %>
 <div class="wrapper">
-<% if @user.avatar != nil %>
-        <%= cl_image_tag(@user.avatar) %>
-    <% end %>
     <div class="sidebar">
-        <div class="avatar"><%= @user.name[0] %></div>
+        <div class="avatar">
+            <% if @user.avatar != nil %>
+                <%= cl_image_tag(@user.avatar) %>
+            <% else %>
+                <%= @user.name[0] %>
+            <% end %>
+        </div>
         <h1><%= @user.name %></h1>
         <p><strong><%= @user.entries.count*3 %></strong> tidbits</p>
         <p><strong><%= @user.followers.count %></strong> <%= "follower".pluralize(@user.followers.count) %></p>
