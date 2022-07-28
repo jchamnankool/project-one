@@ -36,7 +36,7 @@
             <%= f.cl_image_upload :avatar %>
 
             <% if @user.avatar? %>
-                <%= link_to "remove avatar", edit_user_path %>
+                <%= link_to "remove avatar", edit_user_path, :data => { :confirm => "sorry, this is a dummy button for show 🥺" } %>
             <% end %>
 
             <%= f.submit "save changes", :class => "btn" %>

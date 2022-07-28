@@ -14,6 +14,9 @@
         <p><strong><%= @following_count %></strong> following</p>
         <p><strong><%= @hearts_count %></strong> <%= "heart".pluralize(@hearts_count) %></p>
         <%= link_to "make new entry", new_entry_path, :class => "btn" %>
+        <% if @following_count > 0 && @feed.count > 0 %>
+            <%= link_to "take me to a random profile!", user_path(id: @random_user_id), :class => "btn" %>
+        <% end %>
     </div>
 
     <div class="feed">
@@ -52,6 +55,5 @@
             <% end %>
             <%= link_to "ok then, get me a random profile!", user_path(id: @random_user_id), :class => "btn" %>
         <% end %>
-        
     </div>
 </div>
