@@ -15,14 +15,18 @@
 
 
         h1 {
-            font-size: 124px;
+            font-size: 156px;
             align-items: center;
-            margin-bottom: 8px;
+            margin-bottom: 0;
         }
 
         .tagline {
-            text-transform: lowercase;
+            font-size: 32px;
+        }
+
+        .blurb {
             font-size: 24px;
+            margin: 24px 0 12px 0;
         }
 
         .cta {
