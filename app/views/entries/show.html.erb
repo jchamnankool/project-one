@@ -32,7 +32,7 @@
         <%= link_to "❤️ #{heartsText}", hearts_path(heart: {user_name: @current_user.name, user_id: @current_user.id, entry_id: @entry.id}), :method => :post, :class => "hearts" %>
     </div>
 
-    <%= link_to "back to #{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
+    <%= link_to "#{User.find_by_id(@entry.user_id).name}'s profile", user_path(:id => @entry.user_id), :class => "btn" %>
     
     <% if @current_user.id == @entry.user_id %>
         <div class="controls">
