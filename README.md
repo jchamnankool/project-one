@@ -11,10 +11,29 @@ tidbits is based off the principle of *practicing gratitude*. Through the simple
 
 Using tidbits is simple. All you need is an account and you can start making as many entries of positivity as you'd like. Each entry takes *three* tidbits. No more, no less. This is meant to be an easily replicated practice while still requiring at least *some* of your effort and thought. In the future, tidbits might change to allow users to create larger entries.
 
-## Development
-tidbits was developed with Ruby on Rails, SCSS, and PostgreSQL as the database. It utilizes Cloudinary for image uploads. The app is deployed for free on Heroku, and its session authentication is handled using bcrypt. There was an attempt to integrate React, among many other things, but ultimately I decided to have a simple Rails app, at least for *this* iteration of tidbits.
+## Table of Contents
+* [Technologies](#technologies)
+* [Usage](#usage)
+* [Creating an account](#creating-an-account)
+* [Dashboard](#dashboard)
+* [Making a new entry](#making-a-new-entry-of-tidbits)
+* [Profiles](#profiles)
+* ["Hearts"](#hearts)
+* [Settings](#settings)
+* [Admins](#admins)
+
+
+## Technologies
+* Ruby 2.7.6
+* Rails 5.2.8.1
+* SCSS 5.0
+* PostgreSQL
+* bcrypt 3.1.7
+* Cloudinary
 
 ## Usage
+tidbits is deployed on Heroku [here](https://tidbitstime.herokuapp.com).
+
 ### Creating an account
 To create an account, you can either click "Register" in the navigation bar, or the big "register now" button in the middle of the homepage. Note that if you log in, you will not see the homepage again until you log out.
 
