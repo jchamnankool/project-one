@@ -1,6 +1,7 @@
 <%= stylesheet_link_tag 'dashboard' %>
 <div class="wrapper">
     <div class="sidebar">
+        <p class="crown"><%= "👑" if @user.admin? %></p>
         <div class="avatar">
             <% if @user.avatar != nil %>
                 <%= cl_image_tag(@user.avatar) %>
