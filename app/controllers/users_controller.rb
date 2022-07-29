@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
       if user.save
         user.update user_params
-        redirect_to dashboard_path
+        redirect_to edit_user_path
       else
         render :edit
       end
