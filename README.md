@@ -30,6 +30,7 @@ Using tidbits is simple. All you need is an account and you can start making as 
 * PostgreSQL
 * bcrypt 3.1.7
 * Cloudinary
+* Heroku 20
 
 ## Usage
 tidbits is deployed on Heroku [here](https://tidbitstime.herokuapp.com).
